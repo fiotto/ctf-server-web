@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    container_name: php
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ${PWD}:/var/www/html
+    ports:
+      - "80:80"
+    network_mode: "ctf-network"
+
+  db1:
+    container_name: mysql
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - ./mysql/mysql_conf:/etc/mysql/conf.d
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d      
+    network_mode: "ctf-network"
+
+networks:
+  ctf-network:
