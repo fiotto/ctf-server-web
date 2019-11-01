@@ -1,17 +1,17 @@
-version: '3'
+version: '3.3'
 services:
-  app:
+  app-php:
     container_name: php
     build:
       context: ./php
       dockerfile: Dockerfile
     tty: true
     volumes:
-      - ${PWD}:/var/www/html
+      - ${PWD}/php/src:/var/www/html
     ports:
       - "80:80"
-    network_mode: "ctf-network"
-
+    networks:
+      - ctf-network
   db1:
     container_name: mysql
     build:
@@ -24,7 +24,8 @@ services:
     volumes:
       - ./mysql/mysql_conf:/etc/mysql/conf.d
       - ./mysql/initdb.d:/docker-entrypoint-initdb.d      
-    network_mode: "ctf-network"
+    networks:
+      - ctf-network
 
 networks:
   ctf-network:
