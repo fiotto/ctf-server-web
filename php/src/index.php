@@ -7,9 +7,6 @@
     $sql = "SELECT * FROM user WHERE delete_flag=FALSE AND job LIKE '%{$query}%'";
     $stmt = $db->query($sql);
     $result = $stmt->fetchAll();
-
-    var_dump($sql);
-    var_dump($result);
   } catch (PDOException $e) {
     echo $e->getMessage();
     exit;
@@ -24,13 +21,12 @@
 </head>
 <body>
   <div class="container">
-    <form class="form-inline">
-      <div class="form-group mx-sm-3 mb-2">
+    <form class="form-inline my-3">
+      <div class="form-group mb-2">
         <input type="text" name="q" class="form-control" placeholder="職種検索" value="<?php echo $query ?>">
       </div>
-      <button type="submit" class="btn btn-primary mb-2">検索</button>
+      <button type="submit" class="btn btn-primary mb-2 mx-sm-4">検索</button>
     </form>
-    
     <?php if ($query) { ?>
       <p><span class="text-danger"><?php echo $query ?></span>の検索結果</p>
     <?php } ?>
