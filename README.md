@@ -1,4 +1,4 @@
-## ctf-server-web
+## ctf-server-web-for-php
 
 ### 注意
 このリポジトリは意図的に脆弱性を埋め込んでいます。

@@ -4,7 +4,7 @@
     $dsn = "mysql:host=mysql;dbname=ctf_db;charset=utf8;";
     $db = new PDO($dsn, 'root', 'password');
 
-    $sql = "SELECT * FROM user WHERE delete_flag=FALSE AND job LIKE '%{$query}%'";
+    $sql = "SELECT * FROM users WHERE delete_flag=FALSE AND job LIKE '%{$query}%'";
     $stmt = $db->query($sql);
     $result = $stmt->fetchAll();
   } catch (PDOException $e) {
