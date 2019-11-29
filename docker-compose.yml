@@ -26,6 +26,5 @@ services:
       - ./mysql/initdb.d:/docker-entrypoint-initdb.d      
     networks:
       - ctf-network
-
 networks:
   ctf-network:
